@@ -20,7 +20,6 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 87.5%;
-    max-width: 1340px;      /* keeps design from getting too wide */
     background-color: #283D22;
     color: white;
     padding: 10px 30px;
@@ -133,4 +132,11 @@ body.dark-mode {
     background-color: #121212;
     color: #f0f0f0;
     transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+  }
 }
