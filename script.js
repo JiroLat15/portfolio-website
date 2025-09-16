@@ -1,27 +1,20 @@
-/* ========== Clone nav-links into sidebar ========== */
+/* ========== DROPDOWN MENU CLONE ========== */
 document.addEventListener("DOMContentLoaded", () => {
   const burger = document.getElementById("burger");
-  const sidebar = document.getElementById("sidebar");
-  const closeBtn = document.getElementById("closeSidebar");
-  const sidebarLinksContainer = document.getElementById("sidebar-links");
+  const dropdown = document.getElementById("dropdown");
 
-  // Clone nav-links into sidebar
-  const navLinks = document.querySelector(".nav-links").cloneNode(true);
-  sidebarLinksContainer.appendChild(navLinks);
+  // Clone nav-links into dropdown
+  const navLinks = document.querySelector(".nav-links");
+  const newList = navLinks.cloneNode(true); // deep clone
+  dropdown.appendChild(newList);
 
-  // Open sidebar
+  // Toggle dropdown on burger click
   burger.addEventListener("click", () => {
-    sidebar.classList.add("open");
-  });
-
-  // Close sidebar
-  closeBtn.addEventListener("click", () => {
-    sidebar.classList.remove("open");
+    dropdown.classList.toggle("show");
   });
 });
 
 /* ========== THEME TOGGLE SWITCH ========== */
-// Dark/Light mode toggle
 const toggleSwitch = document.getElementById('toggle-switch');
 
 // Check if user had a preference saved
