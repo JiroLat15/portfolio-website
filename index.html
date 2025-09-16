@@ -9,46 +9,45 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    
-    <header class="navbar">
 
-        <div class="nav-container">
+  <!-- blur overlay outside navbar -->
+  <div class="navbar-blur"></div>
 
-            <div class="nav-logo">
-                <div class="logo-container">
-                    <img src="assets/images/brand/JL-Logo.jpg" alt="JL Logo">
-                </div>
-            </div>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experiences">Experiences</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-
-            </nav>
-
-            <div class="burger-menu" id="burger">
-                <div class="bars-wrapper">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="theme-toggle">
-                <input type="checkbox" id="toggle-switch">
-                <label for="toggle-switch" class="switch"></label>
+  <header class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <div class="logo-container">
+                <img src="assets/images/brand/JL-Logo.jpg" alt="JL Logo">
             </div>
         </div>
 
-        <!-- Dropdown menu (will be filled by JS) -->
-        <div class="dropdown" id="dropdown"></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-    </header>
+        <div class="burger-menu" id="burger">
+            <div class="bars-wrapper">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="theme-toggle">
+            <input type="checkbox" id="toggle-switch">
+            <label for="toggle-switch" class="switch"></label>
+        </div>
+    </div>
+
+    <!-- Dropdown menu (will be filled by JS) -->
+    <div class="dropdown" id="dropdown"></div>
+  </header>
 
   <!-- Dummy content to test scroll -->
   <main>
