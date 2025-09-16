@@ -142,7 +142,7 @@ body.dark-mode {
   }
 }
 
-@media (max-width: 300px) /*Mobile Layout*/ {
+@media (max-width: 200px) /*Mobile Layout*/ {
   .nav-links {
     display: none;
   }
