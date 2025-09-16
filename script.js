@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Toggle dropdown on burger click
   burger.addEventListener("click", () => {
     dropdown.classList.toggle("show");
+    burger.classList.toggle("open"); // toggles animation
   });
 });
 
