@@ -135,8 +135,13 @@ body.dark-mode {
 }
 
 /* ========== MEDIA QUERIES ========== */
-@media (max-width: 800px) {
+@media (max-width: 480px) {
   .nav-links {
     display: none;
+  }
+
+  .navbar {
+    top: auto;
+    bottom: 20px;
   }
 }
