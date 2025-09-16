@@ -31,7 +31,7 @@
 
             </nav>
 
-            <div class="burger-menu">
+            <div class="burger-menu" id="burger">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -44,6 +44,21 @@
         </div>
 
     </header>
+
+    <!-- Sidebar (same nav-links reused here via JS) -->
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeSidebar">&times;</button>
+    <!-- nav-links will be cloned/inserted here -->
+    <div id="sidebar-links"></div>
+  </aside>
+
+  <!-- Dummy content to test scroll -->
+  <main>
+    <section style="height:200vh; padding:2rem;">
+      <h1>Scroll Test</h1>
+      <p>Lots of content here…</p>
+    </section>
+  </main>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
