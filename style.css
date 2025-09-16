@@ -136,13 +136,8 @@ body.dark-mode {
 
 /* ========== MEDIA QUERIES ========== */
 
-@media (max-width: 800px)/*Desktop Layout - Zoomed In*/ {
-  .nav-links {
-    display: none;
-  }
-}
 
-@media (max-width: 600px) /*Mobile Layout*/ {
+@media (max-width: 800px) /*Mobile Layout*/ {
   .nav-links {
     display: none;
   }
