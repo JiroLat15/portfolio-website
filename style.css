@@ -136,7 +136,7 @@ body.dark-mode {
 
 /* ========== MEDIA QUERIES ========== */
 
-@media (max-width: 800px)/*Desktop Layout - Zoomed In*/ {
+@media (min-width: 501px) and (max-width: 800px)/*Desktop Layout - Zoomed In*/ {
   .nav-links {
     display: none;
   }
