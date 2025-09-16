@@ -143,6 +143,11 @@ body {
   padding: 15px 20px;
 }
 
+.dropdown .theme-toggle {
+  margin: 10px 20px; /* space from links and sides */
+  display: flex;      /* ensure it shows properly */
+}
+
 .dropdown a {
   text-decoration: none;
   color: white;
