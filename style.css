@@ -76,6 +76,24 @@ body {
     color: #c3e88d;  /* light green hover */
 }
 
+/* ========== BURGER MENU ========== */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 40px; /* same placement as toggle */
+}
+    
+.burger-menu .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #f1f0cc;
+    border-radius: 3px;
+}
+
 /* ========== THEME TOGGLE SWITCH ========== */
 .theme-toggle {
     display: flex;
@@ -137,18 +155,28 @@ body.dark-mode {
 /* ========== MEDIA QUERIES ========== */
 
 @media (min-width: 551px) and (max-width: 800px)/*Desktop Layout - Zoomed In*/ {
-  .nav-links {
-    display: none;
-  }
+    .nav-links,
+    .theme-toggle {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex; /* show burger */
+    }
 }
 
 @media (max-width: 550px) /*Mobile Layout*/ {
-  .nav-links {
-    display: none;
+    .nav-links,
+    .theme-toggle {
+        display: none;
   }
-
-  .navbar {
-    top: auto;
-    bottom: 20px;
+  
+    .burger-menu {
+        display: flex; /* show burger */
+    }
+  
+    .navbar {
+        top: auto;
+        bottom: 20px;
   }
 }
