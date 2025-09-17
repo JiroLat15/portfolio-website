@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     burger.classList.toggle("open"); // toggles burger animation
   });
 
+  /* ========== RESET BURGER & DROPDOWN ON RESIZE (>800px) ========== */
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 800) {
+      // Close dropdown and reset burger
+      dropdown.classList.remove("show");
+      burger.classList.remove("open");
+    }
+  });
+
   /* ========== THEME TOGGLE SWITCH CLONE FOR SMALL SCREENS ========== */
   const themeToggle = document.querySelector('.theme-toggle');
   const toggleSwitch = document.getElementById('toggle-switch');
