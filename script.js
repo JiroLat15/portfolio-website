@@ -1,5 +1,11 @@
-/* ========== DROPDOWN MENU CLONE & BURGER ANIMATION ========== */
+/* =========================================================
+   DOM CONTENT LOADED
+   ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================================
+     BURGER MENU & DROPDOWN
+     ========================================================= */
   const burger = document.getElementById("burger");
   const dropdown = document.getElementById("dropdown");
 
@@ -14,77 +20,81 @@ document.addEventListener("DOMContentLoaded", () => {
     burger.classList.toggle("open"); // toggles burger animation
   });
 
-  /* ========== RESET BURGER & DROPDOWN ON RESIZE (>800px) ========== */
+  // Reset burger & dropdown on resize (>800px)
   window.addEventListener("resize", () => {
     if (window.innerWidth > 800) {
-      // Close dropdown and reset burger
       dropdown.classList.remove("show");
       burger.classList.remove("open");
     }
   });
 
-  /* ========== THEME TOGGLE SWITCH CLONE FOR SMALL SCREENS ========== */
-  const themeToggle = document.querySelector('.theme-toggle');
-  const toggleSwitch = document.getElementById('toggle-switch');
 
+  /* =========================================================
+     THEME TOGGLE (SYNCED ACROSS ALL VARIANTS)
+     ========================================================= */
+  const themeToggleOriginal = document.querySelector('.theme-toggle');
+
+  // Function to sync theme and all toggles
+  function setTheme(theme) {
+    const toggleSwitches = document.querySelectorAll('.theme-toggle input');
+    if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleSwitches.forEach(t => t.checked = true);
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      toggleSwitches.forEach(t => t.checked = false);
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+
+  // Add event listener to original toggle
+  const originalInput = themeToggleOriginal.querySelector('input');
+  originalInput.addEventListener('change', () => {
+    setTheme(originalInput.checked ? 'dark' : 'light');
+  });
+
+
+  /* =========================================================
+     CLONE THEME TOGGLE FOR SMALL SCREENS
+     ========================================================= */
   function updateDropdownToggle() {
-    // Remove old cloned toggle if exists
+    // Remove old clone if exists
     const existingClone = dropdown.querySelector('.theme-toggle');
     if (existingClone) existingClone.remove();
 
-    // Only add toggle if screen is <= 800px (zoomed-in or mobile)
+    // Only add toggle if screen width <= 800px
     if (window.innerWidth <= 800) {
-      const toggleClone = themeToggle.cloneNode(true);
-
-      // Update cloned input ID and label 'for' to be unique
+      const toggleClone = themeToggleOriginal.cloneNode(true);
       const clonedInput = toggleClone.querySelector('input');
       const clonedLabel = toggleClone.querySelector('label');
+
+      // Update ID & label 'for' to avoid duplicates
       clonedInput.id = 'toggle-switch-clone';
       clonedLabel.setAttribute('for', 'toggle-switch-clone');
 
-      // Append toggle clone **below the links**
+      // Append cloned toggle below nav links in dropdown
       const dropdownList = dropdown.querySelector('ul');
       dropdown.insertBefore(toggleClone, dropdownList.nextSibling);
 
-      // Sync state with original toggle
-      clonedInput.checked = toggleSwitch.checked;
+      // Sync state with current theme
+      clonedInput.checked = originalInput.checked;
 
-      // Add event listener for cloned toggle
+      // Event listener for cloned toggle
       clonedInput.addEventListener('change', () => {
-        if (clonedInput.checked) {
-          document.body.classList.add('dark-mode');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          document.body.classList.remove('dark-mode');
-          localStorage.setItem('theme', 'light');
-        }
+        setTheme(clonedInput.checked ? 'dark' : 'light');
       });
     }
   }
 
-  // Run once on page load
+  // Initial run
   updateDropdownToggle();
 
-  // Run on window resize
+  // Update toggle on window resize
   window.addEventListener('resize', updateDropdownToggle);
-});
 
-/* ========== THEME TOGGLE SWITCH FOR DESKTOP ========== */
-const toggleSwitch = document.getElementById('toggle-switch');
-
-// Check if user had a preference saved
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-  if (toggleSwitch) toggleSwitch.checked = true;
-}
-
-// Desktop toggle listener
-toggleSwitch?.addEventListener('change', () => {
-  if (toggleSwitch.checked) {
-    document.body.classList.add('dark-mode');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.body.classList.remove('dark-mode');
-    localStorage.setItem('theme', 'light');
-  }
 });
