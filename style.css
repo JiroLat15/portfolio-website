@@ -1,5 +1,26 @@
 /* =========================================================
-   GLOBAL STYLES & VARIABLES
+   GLOBAL VARIABLES
+   ========================================================= */
+:root {
+  /* Core palette */
+  --color-green: #283D22;
+  --color-light-green: #c3e88d;
+  --color-cream: #f1f0cc;
+  --color-white: #ffffff;
+
+  /* Theme variants */
+  --color-light-bg: #ffffff;
+  --color-light-text: #000000;
+
+  --color-dark-bg: #121212;
+  --color-dark-text: #f0f0f0;
+
+  /* Animation */
+  --transition-speed: 0.3s;
+}
+
+/* =========================================================
+   GLOBAL STYLES
    ========================================================= */
 * {
   margin: 0;
@@ -7,20 +28,12 @@
   box-sizing: border-box;
 }
 
-:root {
-  --transition-speed: 0.3s;
-
-  /* Colors */
-  --color-green: #283D22;
-  --color-light-green: #c3e88d;
-  --color-cream: #f1f0cc;
-  --color-dark-bg: #121212;
-  --color-light-text: #f0f0f0;
-}
-
-/* Global body */
 body {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
   overflow-x: auto; /* enable horizontal scrolling */
+  transition: background var(--transition-speed) ease,
+              color var(--transition-speed) ease;
 }
 
 /* =========================================================
@@ -31,7 +44,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 200px;
+  height: 200px; /* height of your blur area */
   z-index: 500;
   pointer-events: none;
   overflow: hidden;
@@ -43,8 +56,8 @@ body {
   inset: 0;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-
-  /* mask to gradually fade blur */
+  
+  /* mask to gradually fade blur from bottom to middle */
   -webkit-mask-image: linear-gradient(
     to top,
     rgba(0,0,0,0) 0%,
@@ -65,7 +78,7 @@ body {
   transform: translateX(-50%);
   width: 87.5%;
   background-color: var(--color-green);
-  color: white;
+  color: var(--color-white);
   padding: 10px 30px;
   border-radius: 40px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -115,7 +128,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
   font-weight: 500;
   transition: color var(--transition-speed) ease;
 }
@@ -141,7 +154,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20px;
+  height: 20px; /* spacing for burger bars */
 }
 
 .burger-menu .bar {
@@ -159,7 +172,7 @@ body {
 
 .burger-menu.open .bar:nth-child(2) {
   opacity: 0;
-  transform: translateX(0px) rotate(180deg); /* fun spin */
+  transform: translateX(0px) rotate(180deg);
 }
 
 .burger-menu.open .bar:nth-child(3) {
@@ -201,7 +214,7 @@ body {
 
 .dropdown a {
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
   font-size: 1rem;
   transition: color var(--transition-speed) ease;
 }
@@ -272,9 +285,7 @@ body {
    ========================================================= */
 body.dark-mode {
   background-color: var(--color-dark-bg);
-  color: var(--color-light-text);
-  transition: background var(--transition-speed) ease,
-              color var(--transition-speed) ease;
+  color: var(--color-dark-text);
 }
 
 /* =========================================================
