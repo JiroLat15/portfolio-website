@@ -1,163 +1,186 @@
-/* ========== GLOBAL STYLES ========== */
+/* =========================================================
+   GLOBAL STYLES
+   ========================================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --transition-speed: 0.3s;
+  --transition-speed: 0.3s;
 }
 
 body {
-  overflow-x: auto;  /* enable horizontal scrolling for the whole page */
+  overflow-x: auto; /* enable horizontal scrolling */
 }
 
-/* ========== NAVBAR ========== */
+/* =========================================================
+   NAVBAR BLUR BACKGROUND
+   ========================================================= */
 .navbar-blur {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 200px; /* height of your blur area */
-    z-index: 500;
-    pointer-events: none;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 200px; /* height of your blur area */
+  z-index: 500;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .navbar-blur::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(3px); /* max blur */
-    -webkit-backdrop-filter: blur(3px);
-    
-    /* mask to gradually fade blur from bottom to middle */
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  
+  /* mask to gradually fade blur from bottom to middle */
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,1) 75%,
+    rgba(0,0,0,1) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
 }
 
-/* Navbar stays solid and above blur */
+/* =========================================================
+   NAVBAR CORE
+   ========================================================= */
 .navbar {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 87.5%;
-    background-color: #283D22; /* solid green */
-    color: white;
-    padding: 10px 30px;
-    border-radius: 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* above blur */
-    overflow: visible;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 87.5%;
+  background-color: #283D22;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: visible;
 }
 
 .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* pushes logo left, toggle right */
-    flex-wrap: nowrap;              /* keep everything in one line */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
-/* ========== LOGO ========== */
+/* =========================================================
+   LOGO
+   ========================================================= */
 .nav-logo {
-    margin-right: 40px; /* fine-tunes distance from menu links */
+  margin-right: 40px;
 }
 
 .logo-container {
-    width: 60px;           /* rectangle width */
-    height: 40px;          /* rectangle height */
-    border-radius: 10px;   /* rounded corners */
-    overflow: hidden;      /* clips image */
-    min-width: 60px; /* ensures logo area won’t shrink smaller */
+  width: 60px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 60px;
 }
 
 .logo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* fills container proportionally */
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* ========== NAV LINKS ========== */
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;  /* spacing between links */
-    padding-left: 0; /* remove default padding */
-    margin: 0 auto; /* centers nav-links in the middle flex space */
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding-left: 0;
+  margin: 0 auto;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color var(--transition-speed) ease;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color var(--transition-speed) ease;
 }
 
 .nav-links a:hover {
-    color: #c3e88d;  /* light green hover */
+  color: #c3e88d;
 }
 
-/* ========== BURGER MENU ========== */
+/* =========================================================
+   BURGER MENU
+   ========================================================= */
 .burger-menu {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    cursor: pointer;
-    margin-left: 40px; /* same placement as toggle */
-}
-    
-.burger-menu .bar {
-    height: 3px;
-    width: 28px;
-    background-color: #f1f0cc;
-    border-radius: 3px;
-}
-
-/* Hide burger by default (only show at small widths) */
-.burger-menu {
-    display: none;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 40px;
 }
 
 .bars-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20px; /* same as before */
-  transition: transform 0.6s ease;
+  height: 20px; /* spacing for burger bars */
 }
 
-/* ========== BURGER MENU ANIMATION ========== */
-/* When menu is open */
-.burger-menu.open .bars-wrapper {
-  transform: rotate(90deg); /* rotates all bars as a group */
+.burger-menu .bar {
+  height: 3px;
+  width: 28px;
+  background-color: #f1f0cc;
+  border-radius: 3px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-/* ========== DROPDOWN MENU ========== */
+/* Burger animation → "X" */
+.burger-menu.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(0px) rotate(180deg); /* your fun spin */
+}
+
+.burger-menu.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================================================
+   DROPDOWN MENU
+   ========================================================= */
 .dropdown {
   background-color: #283D22;
-  width: 100%; /* match navbar width */
+  width: 100%;
   border-radius: 20px 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  position: absolute; /* positions relative to navbar */
+  position: absolute;
   top: calc(100% + 5px);
   left: 0;
   z-index: 999;
-  max-height: 0;       /* hidden by default */
-  overflow: hidden;    /* hide content when closed */
-  opacity: 0;          /* fade out */
-  transition: max-height 0.8s ease, opacity 0.8s ease; /* smooth animation */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.8s ease, opacity 0.8s ease;
 }
 
 .dropdown.show {
-  max-height: 500px;  /* large enough to fit all links */
-  opacity: 1;         /* fade in */
-  transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.8s ease;
 }
 
 .dropdown ul {
@@ -166,11 +189,6 @@ body {
   flex-direction: column;
   gap: 15px;
   padding: 15px 20px;
-}
-
-.dropdown .theme-toggle {
-  margin: 10px 20px; /* space from links and sides */
-  display: flex;      /* ensure it shows properly */
 }
 
 .dropdown a {
@@ -184,110 +202,129 @@ body {
   color: #c3e88d;
 }
 
-/* ========== THEME TOGGLE SWITCH ========== */
+.dropdown .theme-toggle {
+  margin: 10px 20px;
+  display: flex;
+}
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
 .theme-toggle {
-    display: flex;
-    align-items: center;
-    margin-left: 40px;  /* fine-tunes distance from menu links */
-    min-width: 50px; /* ensures toggle area won’t collapse */
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  min-width: 50px;
 }
 
-/* Hide checkbox */
 .theme-toggle input {
-    display: none;
+  display: none; /* hide checkbox */
 }
 
-/* Switch style */
 .switch {
-    width: 50px;
-    height: 25px;
-    background: #f1f0cc;
-    border-radius: 25px;
-    position: relative;
-    cursor: pointer;
-    transition: background var(--transition-speed) ease;
+  width: 50px;
+  height: 25px;
+  background: #f1f0cc;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--transition-speed) ease;
 }
 
 /* Circle knob with sun and moon */
 .switch::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    background-color: #283d22;
-    background-image: url("assets/icons/sun.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 14px;
-    transition: transform var(--transition-speed) ease, background-image var(--transition-speed) ease;
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: #283d22;
+  background-image: url("assets/icons/sun.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px;
+  transition: transform var(--transition-speed) ease,
+              background-image var(--transition-speed) ease;
 }
 
 /* Checked (Dark Mode ON) */
 .theme-toggle input:checked + .switch {
-    background: #f1f0cc;
+  background: #f1f0cc;
 }
 
 .theme-toggle input:checked + .switch::after {
-    transform: translateX(25px);
-    background-image: url("assets/icons/moon.png");
+  transform: translateX(25px);
+  background-image: url("assets/icons/moon.png");
 }
 
-/* ========== DARK MODE STYLES ========== */
+/* =========================================================
+   DARK MODE
+   ========================================================= */
 body.dark-mode {
-    background-color: #121212;
-    color: #f0f0f0;
-    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+  background-color: #121212;
+  color: #f0f0f0;
+  transition: background var(--transition-speed) ease,
+              color var(--transition-speed) ease;
 }
 
-/* ========== MEDIA QUERIES ========== */
+/* =========================================================
+   MEDIA QUERIES
+   ========================================================= */
 
-@media (min-width: 551px) and (max-width: 800px)/*Desktop Layout - Zoomed In*/ {
-    .nav-links,
-    .theme-toggle {
-        display: none;
-    }
+/* Zoomed-in desktop (551px–800px) */
+@media (min-width: 551px) and (max-width: 800px) {
+  .nav-links,
+  .theme-toggle {
+    display: none;
+  }
 
-    .burger-menu {
-        display: flex; /* show burger */
-        flex-direction: column;
-        justify-content: space-between;
-        width: 28px;
-        height: 20px;
-        cursor: pointer;
-        margin-left: 40px;
-    }
+  .burger-menu {
+    display: flex;
+  }
 }
 
-@media (max-width: 550px) /*Mobile Layout*/ {
-    .nav-links,
-    .theme-toggle {
-        display: none;
+/* Mobile (<550px) */
+@media (max-width: 550px) {
+  .nav-links,
+  .theme-toggle {
+    display: none;
   }
-  
-    .burger-menu {
-        display: flex; /* show burger */
-    }
-  
-    .navbar {
-        top: auto;
-        bottom: 20px;
-  }
-    .navbar-blur {
-        top: auto;
-        bottom: 0px;  /* match navbar bottom spacing */
-        height: 200px; /* same height or adjust if needed */
-    }
 
-    .dropdown {
-        border-radius: 20px 20px;
-        top: auto; /* override top */
-        bottom: calc(100% + 5px); /* optional tweak: small space above navbar */
-    }
-    .navbar-blur::before {
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
-    }
+  .burger-menu {
+    display: flex;
+  }
+
+  .navbar {
+    top: auto;
+    bottom: 20px;
+  }
+
+  .navbar-blur {
+    top: auto;
+    bottom: 0px;
+    height: 200px;
+  }
+
+  .dropdown {
+    border-radius: 20px 20px;
+    top: auto;
+    bottom: calc(100% + 5px);
+  }
+
+  .navbar-blur::before {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,1) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,1) 75%,
+      rgba(0,0,0,1) 100%
+    );
+  }
 }
