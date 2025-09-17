@@ -184,12 +184,12 @@ body {
    ========================================================= */
 .dropdown {
     background-color: var(--color-green);
-    width: 100%;
+
     border-radius: 20px 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     position: absolute;
     top: calc(100% + 5px);
-    left: 0;
+    right: 0;
     z-index: 999;
     max-height: 0;
     overflow: hidden;
